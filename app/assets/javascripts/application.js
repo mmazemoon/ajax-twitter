@@ -12,4 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require folloe_toggle
+//= require follow_toggle
