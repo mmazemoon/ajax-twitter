@@ -15,17 +15,19 @@ $.FollowToggle.prototype.handleClick = function (event) {
   if (this.followState === "unfollowed"){
     $.ajax({
       url: "/users/" + this.userId + "/follow",
-      type: "POST",
+      dataType: "json",
+      method: "POST",
       success: function () {
         followToggle.followState = "followed";
         followToggle.render();
       }
     });
   }
-  else if (this.FollowState === "followed"){
+  else if (this.followState === "followed"){
     $.ajax({
       url: "/users/" + this.userId + "/follow",
-      type: "DELETE",
+      dataType: "json",
+      method: "DELETE",
       success: function () {
         followToggle.followState = "unfollowed";
         followToggle.render();
