@@ -18,7 +18,7 @@ $.FollowToggle.prototype.handleClick = function (event) {
       dataType: "json",
       method: "POST",
       success: function () {
-        followToggle.followState = "followed";
+        followToggle.followState = "following";
         followToggle.render();
       }
     });
@@ -29,7 +29,7 @@ $.FollowToggle.prototype.handleClick = function (event) {
       dataType: "json",
       method: "DELETE",
       success: function () {
-        followToggle.followState = "unfollowed";
+        followToggle.followState = "unfollowing";
         followToggle.render();
       }
     });
@@ -37,10 +37,10 @@ $.FollowToggle.prototype.handleClick = function (event) {
 };
 
 $.FollowToggle.prototype.render = function() {
-  if (this.followState === "unfollowed"){
+  if (this.followState === "unfollowing"){
     this.$el.text("Follow!");
   }
-  else if (this.followState === "followed"){
+  else if (this.followState === "following"){
     this.$el.text("Unfollow!");   // why .html()
   }
 };
