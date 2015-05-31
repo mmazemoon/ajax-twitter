@@ -5,8 +5,13 @@ $.FollowToggle = function (el) {
   this.followState = this.$el.data("initial-follow-state");
 };
 
-$.FollowToggle.prototype.method1 = function() {
-  
+$.FollowToggle.prototype.render = function() {
+  if (this.followState === "unfollowed"){
+    return "Follow!";
+  }
+  if (this.followState === "followed"){
+    return "Unfollow!";
+  }
 };
 
 $.fn.FollowToggle = function (){
