@@ -6,12 +6,39 @@ $.FollowToggle = function (el) {
   this.render();
 };
 
+// click handler
+$.FollowToggle.prototype.handleClick = function (event) {
+  var followToggle = this;
+
+  event.preventDefault();
+  if (this.followState === "unfollowed"){
+    $.ajax({
+      url: "/users/" + this.userId + "/follow",
+      type: "POST",
+      success: function () {
+        followToggle.followState = "followed";
+        followToggle.render();
+      }
+    });
+  }
+  else if (this.FollowState === "followed"){
+    $.ajax({
+      url: "/users/" + this.userId + "/follow",
+      type: "DELETE",
+      success: function () {
+        followToggle.followState = "unfollowed";
+        followToggle.render();
+      }
+    });
+  }
+};
+
 $.FollowToggle.prototype.render = function() {
   if (this.followState === "unfollowed"){
-    this.$el.html("Follow!");
+    this.$el.text("Follow!");
   }
-  if (this.followState === "followed"){
-    this.$el.html("Unfollow!");
+  else if (this.followState === "followed"){
+    this.$el.text("Unfollow!");   // why .html()
   }
 };
 
@@ -22,5 +49,5 @@ $.fn.FollowToggle = function (){
 };
 
 $(function() {
-  $("button.follow-toggle").followToggle();
+  $("button.follow-toggle").FollowToggle();
 });
