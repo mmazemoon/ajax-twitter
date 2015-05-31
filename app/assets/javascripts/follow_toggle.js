@@ -3,14 +3,15 @@ $.FollowToggle = function (el) {
   this.$el = $(el);
   this.userId = this.$el.data("user-id");
   this.followState = this.$el.data("initial-follow-state");
+  this.render();
 };
 
 $.FollowToggle.prototype.render = function() {
   if (this.followState === "unfollowed"){
-    return "Follow!";
+    this.$el.html("Follow!");
   }
   if (this.followState === "followed"){
-    return "Unfollow!";
+    this.$el.html("Unfollow!");
   }
 };
 
