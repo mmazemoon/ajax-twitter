@@ -4,6 +4,7 @@ $.FollowToggle = function (el) {
   this.userId = this.$el.data("user-id");
   this.followState = this.$el.data("initial-follow-state");
   this.render();
+  this.$el.on("click", this.handleClick.bind(this));
 };
 
 // click handler
