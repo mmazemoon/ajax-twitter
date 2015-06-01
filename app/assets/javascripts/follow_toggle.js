@@ -11,7 +11,6 @@ $.FollowToggle = function (el) {
 $.FollowToggle.prototype.handleClick = function (event) {
   var followToggle = this;
 
-
   event.preventDefault();
   if (this.followState === "unfollowed"){
     followToggle.followState = "following";
