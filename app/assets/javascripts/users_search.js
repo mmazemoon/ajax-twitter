@@ -5,3 +5,15 @@ $.UsersSearch = function (el) {
 
   this.$input.on("input", this.handleInput.bind(this));
 };
+
+$.UsersSearch.prototype.handleInput = function (event){
+  var searchInput = this;
+
+  $.ajax({
+    url: "/users/search",
+    method: "GET",
+    dataType: "json",
+    data: { query: this.$input.val() }, // .val
+    success: searchInput.renderResults
+  });
+};
