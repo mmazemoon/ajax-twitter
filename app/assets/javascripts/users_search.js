@@ -20,6 +20,16 @@ $.UsersSearch.prototype.handleInput = function (event){
 
 $.UsersSearch.prototype.renderResults = function (users) {
   this.$ul.empty();
+  for(var i = 0; i < users.length; i++){
+    var user = users[i];
 
-  $("<li>");
+    var $li = $("<li>");
+    var $a = $("<a>");
+
+    $a.attr("href", "/users/" + user.id);
+    $a.text(user.username);
+
+    $li.append($a);
+    this.$ul.append($li);
+    }
 };
