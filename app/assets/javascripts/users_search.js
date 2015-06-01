@@ -13,7 +13,13 @@ $.UsersSearch.prototype.handleInput = function (event){
     url: "/users/search",
     method: "GET",
     dataType: "json",
-    data: { query: this.$input.val() }, // .val
+    data: { query: this.$input.val() },
     success: searchInput.renderResults
   });
+};
+
+$.UsersSearch.prototype.renderResults = function (users) {
+  this.$ul.empty();
+
+  $("<li>");
 };
